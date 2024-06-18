@@ -4,7 +4,36 @@
 
 Welcome to the **LLaVA MagVit2** project! This repository combines the power of Multimodal Large Language Models (MLLM) with the advanced capabilities of MagVit2 for image understanding and generation. Our main goal is to leverage the Image tokenizer inside LLava to enhance both the comprehension and creation of images, pushing the boundaries of what's possible in the field of computer vision and natural language processing.
 
-> ⚠️👷 the repo is currently at early stage, combining Image understanding and Generation is a good exporation on Multi Modal LLMs. Our ultimate goal is to make it a mini GPT4o with vision and voice ability.
+> ⚠️👷 the repo is currently at early stage, combining Image understanding and Generation is a good exporation on Multi Modal LLMs. Our ultimate goal is to make it a mini GPT4o with vision and voice ability. 
+
+
+> Our codebase based on LLaVA-Next, thanks to the original author.
+
+
+## 🤖 Get Started
+
+Now, we just able to intergrate Magvit2 into llava, you can try reconstruct the image with:
+
+Download the magvit2 tokenizer checkpoints:
+
+```
+mkdir checkpoints && cd checkpoints
+huggingface-cli download TencentARC/Open-MAGVIT2 --local-dir magvit2
+```
+then: 
+
+```
+python test_image_tokenizer.py --ckpt_path checkpoints/magvit2/imagenet_128_B.ckpt --image_file images/a.jpg
+```
+
+You will see how the text being reconstructed well in the saved image.
+
+Next, we are going to using these features for understanding.
+
+![](https://gitcode.net/godofgodofgod/gerg/-/raw/main/pictures/2024/06/18_12_11_12_202406181211295.png)
+
+Left is origin image, right is reconstruct with only [1, 18, h, w] codecs.
+
 
 ## 🏆 Results
 
@@ -31,7 +60,7 @@ To reproduce our experiments, follow these steps:
 
 1. **📥 Clone the Repository**:
     ```bash
-    git clone https://github.com/MonolithFoundation/LLaVA-MagVit2.git
+    git clone https://github.com/lucasjinreal/LLaVA-MagVit2.git
     cd LLaVA-MagVit2
     ```
 
