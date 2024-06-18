@@ -66,8 +66,8 @@ def main(args):
    
     img_f = args.image_file
     idx = os.path.basename(img_f)[:-4] + '_constructed'
-    image = Image.open(img_f)
-    image = np.array(image)
+    image_raw = Image.open(img_f)
+    image = np.array(image_raw)
     image = image / 127.5 - 1.0
     image = T.ToTensor()(image).unsqueeze(0)
     print(image.shape)
@@ -82,6 +82,7 @@ def main(args):
 
     image = custom_to_pil(image)
     reconstructed_image = custom_to_pil(reconstructed_image)
+    reconstructed_image.resize((image_raw.width, image_raw.height))
 
     image.save(os.path.join(visualize_original, "{}.png".format(idx)))
     reconstructed_image.save(os.path.join(visualize_rec, "{}.png".format(idx)))
