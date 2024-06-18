@@ -30,7 +30,7 @@ You will see how the text being reconstructed well in the saved image.
 
 Next, we are going to using these features for understanding.
 
-![](https://gitcode.net/godofgodofgod/gerg/-/raw/main/pictures/2024/06/18_12_11_12_202406181211295.png)
+![](https://gitcode.net/godofgodofgod/gerg/-/raw/main/pictures/2024/06/18_13_9_26_202406181309984.png)
 
 Left is origin image, right is reconstruct with only [1, 18, h, w] codecs.
 
