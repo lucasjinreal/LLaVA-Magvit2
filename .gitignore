@@ -1,0 +1,43 @@
+# Python
+__pycache__
+*.pyc
+*.egg-info
+dist
+
+# Log
+*.log
+*.log.*
+*.json
+*.jsonl
+
+# Data
+!**/alpaca-data-conversation.json
+
+# Editor
+.idea
+*.swp
+
+# Other
+.DS_Store
+wandb
+output
+
+checkpoints
+ckpts*
+
+.ipynb_checkpoints
+*.ipynb
+vendor/
+checkpoints/
+
+vit/
+logs/
+gpt4v-dataset/
+llava_qwen_7b_lora/
+minigemini_qwen_7b/
+minigemini_qwen_4b/
+llava_qwen_*/
+
+minigemini_qwen*/
+llava_llama3_8b*
+
