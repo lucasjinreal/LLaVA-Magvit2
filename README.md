@@ -23,17 +23,20 @@ huggingface-cli download TencentARC/Open-MAGVIT2 --local-dir magvit2
 then: 
 
 ```
-python test_image_tokenizer.py --ckpt_path checkpoints/magvit2/imagenet_128_B.ckpt --image_file images/a.jpg
+# choose num_down=3 for imagenet_128_B.ckpt, choose num_down=4 for imagenet_256_B.ckpt
+python test_image_tokenizer.py --ckpt_path checkpoints/magvit2/imagenet_128_B.ckpt --num_down 3 --image_file images/a.jpg
 ```
 
 You will see how the text being reconstructed well in the saved image.
 
 Next, we are going to using these features for understanding.
 
-| Original | Reconstructed |
-| --- | --- |
-| ![Alt text for Image 1](images/b.jpg) | ![Alt text for Image 2](images/b_constructed.png) |
-| ![Alt text for Image 1](images/c.jpg) | ![Alt text for Image 2](images/c_constructed.png) |
+| Original | Reconstructed (d=3, [IN128_Base](https://huggingface.co/TencentARC/Open-MAGVIT2/blob/main/imagenet_128_B.ckpt)) | Reconstructed (d=4, [IN256_Base](https://huggingface.co/TencentARC/Open-MAGVIT2/blob/main/imagenet_256_B.ckpt)) |
+| --- | --- | --- |
+| ![Alt text for Image 1](images/a.jpg) | ![Alt text for Image 2](images/a_constructed_128.png) | ![Alt text for Image 2](images/a_constructed_256.png) |
+| ![Alt text for Image 1](images/b.jpg) | ![Alt text for Image 2](images/b_constructed_128.png) | ![Alt text for Image 2](images/b_constructed_256.png) |
+| ![Alt text for Image 1](images/c.jpg) | ![Alt text for Image 2](images/c_constructed_128.png) | ![Alt text for Image 2](images/c_constructed_256.png) |
+
 
 Left is origin image, right is reconstruct with only [1, 18, h, w] codecs.
 

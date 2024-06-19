@@ -17,8 +17,8 @@ import torchvision.transforms as T
 
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-def load_vqgan_new(ckpt_path=None, is_gumbel=False):
-  model = VQModel(use_ema=True)
+def load_vqgan_new(num_down, ckpt_path=None, is_gumbel=False):
+  model = VQModel(num_down=num_down, use_ema=True)
   if ckpt_path is not None:
     sd = torch.load(ckpt_path, map_location="cpu")["state_dict"]
     missing, unexpected = model.load_state_dict(sd, strict=False)
@@ -51,12 +51,12 @@ def custom_to_pil(x):
     return x
 
 def main(args):
-    model = load_vqgan_new(args.ckpt_path).to(DEVICE)
+    model = load_vqgan_new(args.num_down, args.ckpt_path).to(DEVICE)
 
     visualize_dir = 'results/'
     visualize_version = 'v0'
-    visualize_original = os.path.join(visualize_dir, visualize_version, "original_{}".format(args.image_size))
-    visualize_rec = os.path.join(visualize_dir, visualize_version, "rec_{}".format(args.image_size))
+    visualize_original = os.path.join(visualize_dir, visualize_version, "original_{}".format(args.num_down))
+    visualize_rec = os.path.join(visualize_dir, visualize_version, "rec_{}".format(args.num_down))
     if not os.path.exists(visualize_original):
        os.makedirs(visualize_original, exist_ok=True)
     
@@ -91,7 +91,7 @@ def main(args):
 def get_args():
    parser = argparse.ArgumentParser(description="inference parameters")
    parser.add_argument("--ckpt_path", required=True, type=str)
-   parser.add_argument("--image_size", default=128, type=int)
+   parser.add_argument("--num_down", default=4, type=int)
    parser.add_argument("--batch_size", default=1, type=int) ## inference only using 1 batch size
    parser.add_argument("--image_file", default='images/a.jpg', type=str)
    parser.add_argument("--subset", default=None)
