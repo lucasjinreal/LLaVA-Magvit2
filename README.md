@@ -12,6 +12,8 @@ Welcome to the **LLaVA MagVit2** project! This repository combines the power of 
 
 ## 🤖 Get Started
 
+Before using this repo, please install `pip install imagetokenizer`, from https://github.com/lucasjinreal/ImageTokenizer . This is a unified image tokenizer pakcage easy to use.
+
 Now, we just able to intergrate Magvit2 into llava, you can try reconstruct the image with:
 
 Download the magvit2 tokenizer checkpoints:
